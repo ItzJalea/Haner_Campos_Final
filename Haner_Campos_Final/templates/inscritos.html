@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulario de Inscritos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div>
+            <!-- Columna de la tabla -->
+            <div class="container">                
+                {% if inscritos %}
+                <h2>Inscritos</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Teléfono</th>
+                                <th>Fecha de inscripción</th>
+                                <th>Institución</th>
+                                <th>Hora de inscripción</th>
+                                <th>Estado</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for inscrito in inscritos %}
+                                <tr>
+                                    <td>{{ inscrito.nombre }}</td>
+                                    <td>{{ inscrito.telefono }}</td>
+                                    <td>{{ inscrito.fechaInscripcion }}</td>
+                                    <td>{{ inscrito.institucion }}</td>
+                                    <td>{{ inscrito.horaInscripcion }}</td>
+                                    <td>{{ inscrito.estado }}</td>
+                                    <td><td><a class="btn btn-success btn-sm" href="/editarinscritos/{{inscrito.id}}"><i class="bi bi-pencil-square"></i></a></td></td>
+                                    <td><td><a class="btn btn-warning btn-sm" href="/eliminarinscritos/{{inscrito.id}}"><i class="bi bi-trash"></i></a></td></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
+                <a href="/" class="btn btn-danger">VOLVER</a>
+                <a href="/addinscrito" class="btn btn-success float-end">AGREGAR</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
